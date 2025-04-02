@@ -152,7 +152,7 @@ select DISTINCT(customer_id),SUM(total_sale) as spent
 from retail_sales  
 group by customer_id
 order by spent desc
-limit 3 
+limit 5
 
 -- Q.8 Write a SQL query to find the number of unique customers who purchased items from each category.
 
