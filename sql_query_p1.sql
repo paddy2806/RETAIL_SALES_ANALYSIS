@@ -94,10 +94,9 @@ SELECT DISTINCT category FROM retail_sales;
 -- Q.3 Write a SQL query to calculate the total sales (total_sale) for each category.
 -- Q.4 Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
 -- Q.5 Write a SQL query to find all transactions where the total_sale is greater than 1000.
--- Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
--- Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
--- Q.8 Write a SQL query to find the top 5 customers based on the highest total sales 
--- Q.9 Write a SQL query to find the number of unique customers who purchased items from each category.
+-- Q.6 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
+-- Q.7 Write a SQL query to find the top 5 customers based on the highest total sales 
+-- Q.8 Write a SQL query to find the number of unique customers who purchased items from each category.
 
 
 
@@ -136,14 +135,8 @@ SELECT  transactions_id as all_transactions
 FROM retail_sales 
 WHERE total_sale > 1000
 
--- Q.6 Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
 
-SELECT category ,gender ,COUNT (transactions_id) AS txn_no
-FROM retail_sales
-GROUP BY category,gender
-
-
--- Q.7 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
+-- Q.6 Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
 
 select 
 extract (YEAR FROM sale_date) as year,
@@ -153,7 +146,7 @@ from retail_sales
 group by year,month 
 order by year, month 
 
--- Q.8 Write a SQL query to find the top 5 customers based on the highest total sales 
+-- Q.7 Write a SQL query to find the top 5 customers based on the highest total sales 
 
 select DISTINCT(customer_id),SUM(total_sale) as spent
 from retail_sales  
@@ -161,7 +154,7 @@ group by customer_id
 order by spent desc
 limit 3 
 
--- Q.9 Write a SQL query to find the number of unique customers who purchased items from each category.
+-- Q.8 Write a SQL query to find the number of unique customers who purchased items from each category.
 
 SELECT COUNT(DISTINCT customer_id) ,category
 FROM retail_sales
